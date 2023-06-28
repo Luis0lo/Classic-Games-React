@@ -60,7 +60,7 @@ export default function Sidebar() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
   const isMobileView = window.innerWidth <= 600;
-  const topPosition = isMobileView ? 51 : 64;
+  const topPosition = isMobileView ? 56 : 64;
 
   const handleDrawerOpen = () => {
     setOpen(true);
