@@ -40,18 +40,27 @@ function TicTacToe() {
 
   useEffect(() => {
     let result = calculateWinner(board);
-
-    if (result) {
+    if (result !== null) {
       setWinner(result);
-      setBoard(Array(9).fill(result));
     }
   }, [board]);
 
   return (
-    <Box style={{ textAlign: 'center' }}>
+    <Box
+      style={{
+        textAlign: 'center',
+      }}
+    >
       <Typography variant="h2" style={{ textAlign: 'center' }}>
         Tic Tac Toe
       </Typography>
+      {winner === 'DRAW' ? (
+        <div>Result: {winner}</div>
+      ) : winner ? (
+        <div>🎉 Winner: {winner} 🎉</div>
+      ) : (
+        <div>&nbsp;</div>
+      )}
       <Board
         winner={winner}
         setBoard={setBoard}
@@ -59,19 +68,16 @@ function TicTacToe() {
         nextPlayer={nextPlayer}
         setNextPlayer={setNextPlayer}
       />
+      {/* {!winner && <div> Next Player: {nextPlayer}</div>} */}
 
-      {!winner && <div> Next Player: {nextPlayer}</div>}
-      {winner === 'DRAW' ? (
-        <div>Result: {winner}</div>
-      ) : (
-        <div>Winner: {winner}</div>
-      )}
-      {winner && (
+      {winner ? (
         <PlayButton
           setBoard={setBoard}
           setWinner={setWinner}
           setNextPlayer={setNextPlayer}
         />
+      ) : (
+        <div> Next Player: {nextPlayer}</div>
       )}
     </Box>
   );

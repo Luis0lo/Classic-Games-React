@@ -3,7 +3,7 @@ import Navbar from './components/Navbar';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Sidebar from './components/Sidebar';
-import { Grid } from '@mui/material';
+import { Grid, Paper } from '@mui/material';
 import TicTacToe from './games/TicTacToe';
 
 function App() {
@@ -25,11 +25,12 @@ function App() {
           direction="row"
           justifyContent="center"
           alignItems="center"
-          spacing={2}
-          marginTop={1}
+          height="100vh"
         >
-          <Grid item>
-            <TicTacToe />
+          <Grid item padding={2}>
+            <Paper sx={{ padding: 2 }}>
+              <TicTacToe />
+            </Paper>
           </Grid>
         </Grid>
       </div>
@@ -39,13 +40,3 @@ function App() {
 
 export default App;
 
-{
-  /* <Grid container justify='center' border={1} style={{ textAlign: 'center' }}  >
-          <Grid item style={{ marginLeft: 140 }} border={2}>
-            <h1>Title</h1>
-          </Grid>
-          <Grid item>
-            <h1>title 2</h1>
-          </Grid>
-        </Grid> */
-}
