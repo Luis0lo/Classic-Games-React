@@ -53,7 +53,7 @@ export default function Sidebar({ setGame }) {
           aria-label="open drawer"
           onClick={handleDrawerOpen}
           size="large"
-          // sx={{ ...(open && { display: 'none' }) }}
+          sx={{ ...(open && { display: 'none' }) }}
         >
           <VideogameAssetSharpIcon fontSize="large" />
         </IconButton>
