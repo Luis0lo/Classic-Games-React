@@ -9,7 +9,7 @@ import RockPaperScissors from './games/RockPaperScissors.js';
 import Sudoku from './games/Sudoku.js';
 
 function App() {
-  const [game, setGame] = useState('Tic Tac Toe');
+  const [game, setGame] = useState('Rock Paper Scissors');
   const [darkMode, setDarkMode] = useState(false);
   const darkTheme = createTheme({
     palette: {
