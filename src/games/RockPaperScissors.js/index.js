@@ -7,7 +7,7 @@ export default function RockPaperScissors() {
   const [userPoints, setUserPoints] = useState(0);
   const [computerPoints, setComputerPoints] = useState(0);
   const [turnResult, setTurnResult] = useState(null);
-  const [result, setResult] = useState(`Let's find the winner!`);
+  const [result, setResult] = useState(`Let's PLay!`);
   const [gameOver, setGameOver] = useState(false);
 
   const choices = ['rock', 'paper', 'scissors'];
@@ -30,6 +30,7 @@ export default function RockPaperScissors() {
         if (updatedUserPoints === 5) {
           setGameOver(true);
           setResult('User Wins');
+          setTurnResult('');
         }
       } else if (
         comboMoves === 'paperscissors' ||
@@ -42,6 +43,7 @@ export default function RockPaperScissors() {
         if (updatedComputerPoints === 5) {
           setGameOver(true);
           setResult('Computer Wins');
+          setTurnResult('');
         }
       } else {
         setTurnResult('Draw');
@@ -67,18 +69,14 @@ export default function RockPaperScissors() {
         textAlign: 'center',
       }}
     >
-      <Typography variant="h3" style={{ textAlign: 'center' }}>
+      <Typography variant="h4" sx={{ m: 2 }}>
         Rock Paper Scissors
       </Typography>
-      <Box>
-        <Typography variant="h4" style={{ textAlign: 'center' }}>
-          User: {userPoints}
-        </Typography>
-        <Typography variant="h4" style={{ textAlign: 'center' }}>
-          Computer: {computerPoints}
-        </Typography>
+      <Box display="flex" justifyContent="space-around">
+        <Typography variant="h5">User: {userPoints}</Typography>
+        <Typography variant="h5">Computer: {computerPoints}</Typography>
       </Box>
-      <Box display="flex" justifyContent="center">
+      <Box display="flex" justifyContent="space-around" sx={{ m: 2 }}>
         <Paper className="choiceUser">
           <img
             width="100"
@@ -89,6 +87,7 @@ export default function RockPaperScissors() {
         </Paper>
         <Paper className="choiceComputer">
           <img
+            style={{ transform: 'rotatey(180deg)' }}
             width="100"
             className="computerHand"
             src={`../images/${computerChoice}.png`}
@@ -96,12 +95,13 @@ export default function RockPaperScissors() {
           />
         </Paper>
       </Box>
-      <Box>
+      <Box sx={{ m: 2 }}>
         {choices.map((choice, index) => (
           <Button
             variant="contained"
             key={index}
             onClick={() => handleClick(choice)}
+            sx={{ m: 1 }}
           >
             {choice}
           </Button>
@@ -117,7 +117,7 @@ export default function RockPaperScissors() {
       </Box>
       <Box>
         {gameOver && (
-          <Button variant="contained" onClick={() => reset()}>
+          <Button color='success' variant="contained" onClick={() => reset()}>
             Start Again
           </Button>
         )}
